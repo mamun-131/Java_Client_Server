@@ -5,63 +5,67 @@ import java.io.Serializable;
 // Data transfer object
 public class AccountDTO implements Serializable {
 	
-	private static final long serialVersionUID = 8296077336599202180L;
-	int accNumber;
-	int accPin;
-	double amount;
-	String operation;
+	private static final long SERIAL_VERSION_UID = 8296077336599202180L;
 	
-	public AccountDTO(int accNumber, int accPin, double amount) {
-		this.accNumber = accNumber;
-		this.accPin = accPin;
-		this.amount = amount;
+	private int mAccountNumnber;
+	private int mAccountPin;
+	private double mAmount;
+	private String mOperation;
+	
+	/**
+	 * Constructor
+	 */
+	public AccountDTO(int accountNumber, int accountPin, double amount) {
+		mAccountNumnber = accountNumber;
+		mAccountPin = accountPin;
+		mAmount = amount;
 	}
 	/**
-	 * @return the accNumber
+	 * @return the account number
 	 */
-	public int getAccNumber() {
-		return accNumber;
+	public int getAccountNumber() {
+		return mAccountNumnber;
 	}
 	/**
-	 * @param accNumber the accNumber to set
+	 * @param accountNumber the account number to set
 	 */
-	public void setAccNumber(int accNumber) {
-		this.accNumber = accNumber;
+	public void setAccountNumber(int accountNumber) {
+		mAccountNumnber = accountNumber;
 	}
 	/**
-	 * @return the accPin
+	 * @return the account pin
 	 */
-	public int getAccPin() {
-		return accPin;
+	public int getAccountPin() {
+		return mAccountPin;
 	}
 	/**
-	 * @param accPin the accPin to set
+	 * @param accountPin the account pin to set
 	 */
-	public void setAccPin(int accPin) {
-		this.accPin = accPin;
+	public void setmAccountPin(int accountPin) {
+		mAccountPin = accountPin;
 	}
 	/**
 	 * @return the amount
 	 */
 	public double getAmount() {
-		return amount;
+		return mAmount;
 	}
 	/**
 	 * @param amount the amount to set
 	 */
 	public void setAmount(double amount) {
-		this.amount = amount;
+		mAmount = amount;
 	}
 	/**
 	 * @return the operation
 	 */
 	public String getOperation() {
-		return operation;
+		return mOperation;
 	}
 	/**
 	 * @param operation the operation to set
 	 */
 	public void setOperation(String operation) {
-		this.operation = operation;
+		mOperation = operation;
 	}
 }

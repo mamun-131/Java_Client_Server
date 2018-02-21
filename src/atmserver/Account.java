@@ -1,28 +1,27 @@
 package atmserver;
 
-import atmserver.Transection;
+import atmserver.Transaction;
 
-public class Account extends Transection {
+public class Account extends Transaction {
 
-	   private int pin; // PIN for authentication
+	private int mPin;
 	
-	   // Account constructor initializes attributes
-	   public Account(int theAccountNumber, int thePIN, double theTotalBalance)
-	   {
-	      this.accountNumber = theAccountNumber;
-	      this.pin = thePIN;
-	      this.totalBalance = theTotalBalance;
-	   } // end Account constructor
+	/**
+	 * Constructor
+	 */
+	public Account(int accountNumber, int pin, double totalBalance) {
+		super(accountNumber, totalBalance);
+		mPin = pin;
+	}
 
-	   // determines whether a user-specified PIN matches PIN in Account
-	   public boolean validatePIN(int userPIN)
-	   {
-	      if (userPIN == pin)
-	         return true;
-	      else
-	         return false;
-	   } // end method validatePIN
-
-
-
+	/**
+	 * @param amount determines whether a user-specified PIN matches PIN in the Account
+	 */
+	public boolean validatePIN(int pin) {
+	    if (pin == mPin) {
+			return true;
+		}
+	    
+		return false;
+	} 
 }

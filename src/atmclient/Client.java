@@ -30,22 +30,23 @@ import javax.swing.JPasswordField;
 
 public class Client {
 
-	JFrame frame;
-	private JTextField txtUserName;
-	private JTextField txtAmount;
-	private JPasswordField txtPIN;
-	private JLabel lblShowBalance;
-	private JLabel lblErrorMsg;
-	private	JLabel lblLogInStatus; 
+	private JFrame mFrame;
+	private JTextField mUserNameTF;
+	private JTextField mAmountTF;
+	private JPasswordField mPINTF;
+	private JLabel mShowBlanceLabel;
+	private JLabel mErrorMessageLabel;
+	private	JLabel mLoginStatusLabel; 
+	
 	/**
-	 * Launch the application........
+	 * Launch the application
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Client window = new Client();
-					window.frame.setVisible(true);
+					window.mFrame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -64,17 +65,17 @@ public class Client {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setBackground(Color.LIGHT_GRAY);
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
-				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),
-				FormFactory.RELATED_GAP_COLSPEC,
-				FormFactory.DEFAULT_COLSPEC,
-				FormFactory.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("default:grow"),},
+		mFrame = new JFrame();
+		mFrame.getContentPane().setBackground(Color.LIGHT_GRAY);
+		mFrame.setBounds(100, 100, 450, 300);
+		mFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		mFrame.getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
+			FormFactory.RELATED_GAP_COLSPEC,
+			ColumnSpec.decode("default:grow"),
+			FormFactory.RELATED_GAP_COLSPEC,
+			FormFactory.DEFAULT_COLSPEC,
+			FormFactory.RELATED_GAP_COLSPEC,
+			ColumnSpec.decode("default:grow"),},
 			new RowSpec[] {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("default:grow"),
@@ -93,100 +94,98 @@ public class Client {
 				FormFactory.RELATED_GAP_ROWSPEC,
 				FormFactory.DEFAULT_ROWSPEC,
 				FormFactory.RELATED_GAP_ROWSPEC,
-				FormFactory.DEFAULT_ROWSPEC,}));
+				FormFactory.DEFAULT_ROWSPEC,}
+		));
 		
-		JButton btnLogIn = new JButton("Login");
-		btnLogIn.addActionListener(new ActionListener() {
+		JButton loginBtn = new JButton("Login");
+		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				runTransaction("Balance");
 			}
 		});
+		mFrame.getContentPane().add(loginBtn, "2, 12, left, default");
 		
-		JLabel lblAtmSystem = new JLabel("ATM SYSTEM");
-		lblAtmSystem.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
-		lblAtmSystem.setForeground(Color.BLUE);
-		frame.getContentPane().add(lblAtmSystem, "2, 2");
+		JLabel atmSystemLabel = new JLabel("ATM SYSTEM");
+		atmSystemLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 22));
+		atmSystemLabel.setForeground(Color.BLUE);
+		mFrame.getContentPane().add(atmSystemLabel, "2, 2");
 		
-		JLabel lblBalance = new JLabel("Balance");
-		frame.getContentPane().add(lblBalance, "6, 2");
+		JLabel balanceLabel = new JLabel("Balance");
+		mFrame.getContentPane().add(balanceLabel, "6, 2");
 		
-		JLabel lblUserName = new JLabel("User Name");
-		frame.getContentPane().add(lblUserName, "2, 4");
+		JLabel userNameLabel = new JLabel("User Name");
+		mFrame.getContentPane().add(userNameLabel, "2, 4");
 		
-		txtUserName = new JTextField();
-		frame.getContentPane().add(txtUserName, "2, 6, fill, default");
-		txtUserName.setColumns(10);
+		mUserNameTF = new JTextField();
+		mFrame.getContentPane().add(mUserNameTF, "2, 6, fill, default");
+		mUserNameTF.setColumns(10);
 		
-		lblShowBalance = new JLabel("");
-		lblShowBalance.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
-		lblShowBalance.setBackground(new Color(72, 61, 139));
-		lblShowBalance.setForeground(new Color(255, 192, 203));
-		lblShowBalance.setOpaque(true);
-		frame.getContentPane().add(lblShowBalance, "6, 3, 1, 7, fill, default");
+		mShowBlanceLabel = new JLabel("");
+		mShowBlanceLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 16));
+		mShowBlanceLabel.setBackground(new Color(72, 61, 139));
+		mShowBlanceLabel.setForeground(new Color(255, 192, 203));
+		mShowBlanceLabel.setOpaque(true);
+		mFrame.getContentPane().add(mShowBlanceLabel, "6, 3, 1, 7, fill, default");
 		
-		JLabel lblPIN = new JLabel("Passward");
-		frame.getContentPane().add(lblPIN, "2, 8");
+		JLabel pinLabel = new JLabel("Passward");
+		mFrame.getContentPane().add(pinLabel, "2, 8");
 		
-		txtPIN = new JPasswordField();
-		frame.getContentPane().add(txtPIN, "2, 10, fill, default");
+		mPINTF = new JPasswordField();
+		mFrame.getContentPane().add(mPINTF, "2, 10, fill, default");
 		
-		lblErrorMsg = new JLabel("");
-		lblErrorMsg.setForeground(Color.RED);
-		frame.getContentPane().add(lblErrorMsg, "6, 10");
-		frame.getContentPane().add(btnLogIn, "2, 12, left, default");
+		mErrorMessageLabel = new JLabel("");
+		mErrorMessageLabel.setForeground(Color.RED);
+		mFrame.getContentPane().add(mErrorMessageLabel, "6, 10");
 		
-		JLabel lblDepoWith = new JLabel("Insert the AMOUNT to deposit or withdraw below");
-		lblDepoWith.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
-		lblDepoWith.setForeground(Color.BLUE);
-		frame.getContentPane().add(lblDepoWith, "6, 12");
+		JLabel depositWithrawLabel = new JLabel("Insert the AMOUNT to deposit or withdraw below");
+		depositWithrawLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 11));
+		depositWithrawLabel.setForeground(Color.BLUE);
+		mFrame.getContentPane().add(depositWithrawLabel, "6, 12");
 		
-	    lblLogInStatus = new JLabel("");
-		frame.getContentPane().add(lblLogInStatus, "2, 14");
+	    mLoginStatusLabel = new JLabel("");
+		mFrame.getContentPane().add(mLoginStatusLabel, "2, 14");
 		
-		txtAmount = new JTextField();
-		frame.getContentPane().add(txtAmount, "6, 14, fill, default");
-		txtAmount.setColumns(10);
+		mAmountTF = new JTextField();
+		mFrame.getContentPane().add(mAmountTF, "6, 14, fill, default");
+		mAmountTF.setColumns(10);
 		
-		JButton btnDeposit = new JButton("Deposit");
-		btnDeposit.addActionListener(new ActionListener() {
+		JButton depoistBtn = new JButton("Deposit");
+		depoistBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				runTransaction(btnDeposit.getText());
+				runTransaction(depoistBtn.getText());
 			}
 		});
 		
-		JButton btnBalance = new JButton("Balance");
-		btnBalance.addActionListener(new ActionListener() {
+		JButton balanceBtn = new JButton("Balance");
+		balanceBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				runTransaction(btnBalance.getText());
+				runTransaction(balanceBtn.getText());
 			}
 		});
-		frame.getContentPane().add(btnBalance, "2, 16");
-		frame.getContentPane().add(btnDeposit, "6, 16, center, default");
+		mFrame.getContentPane().add(balanceBtn, "2, 16");
+		mFrame.getContentPane().add(depoistBtn, "6, 16, center, default");
 		
-		JButton btnWithdraw = new JButton("Withdraw");
-		btnWithdraw.addActionListener(new ActionListener() {
+		JButton withdrawBtn = new JButton("Withdraw");
+		withdrawBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				runTransaction(btnWithdraw.getText());
+				runTransaction(withdrawBtn.getText());
 			}
 		});
-
-		frame.getContentPane().add(btnWithdraw, "6, 18, center, default");
+		mFrame.getContentPane().add(withdrawBtn, "6, 18, center, default");
 	}
-	
-	
 	
 	
 	/**
 	 * Validate fields
 	 */
-	public Boolean validateFields(){
+	public Boolean validateFields() {
 		try{
-			Integer.parseInt(txtUserName.getText());
-			Integer.parseInt(txtPIN.getText());
-			if (txtAmount.getText().trim().equals("")) {
-				txtAmount.setText("0.00");
+			Integer.parseInt(mUserNameTF.getText());
+			Integer.parseInt(mPINTF.getText());
+			if (mAmountTF.getText().trim().equals("")) {
+				mAmountTF.setText("0.00");
 			}
-			Double.parseDouble(txtAmount.getText());
+			Double.parseDouble(mAmountTF.getText());
 		} catch (NumberFormatException e){
 			return false;
 		}
@@ -194,48 +193,45 @@ public class Client {
 	}
 	
 	
-	
 	public void runTransaction(String action) {
 
 		// validate fields first
-		Boolean areValid = validateFields();
+		Boolean bIsValid = validateFields();
 		
-		if (!areValid) {
-			lblErrorMsg.setText("Error");
-			lblShowBalance.setText("<html>Login first or <br>Please verify that fields are correct");
+		if (!bIsValid) {
+			mErrorMessageLabel.setText("Error");
+			mShowBlanceLabel.setText("<html>Login first or <br>Please verify that fields are correct");
 			return; // exit the method
 		}
-		else
-		{
-			lblLogInStatus.setText("You are Logged In");
-			
+		else {
+			mLoginStatusLabel.setText("You are Logged In");		
 		}
 		
 		// Guard everything in a try-finally to make
 		// sure that the socket is closed:
 		try {
-			InetAddress addr = InetAddress.getByName(null);
-			Socket socket = new Socket(addr, 8080);
-			ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
-			ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
+			InetAddress inetAddress = InetAddress.getByName(null);
+			Socket socket = new Socket(inetAddress, 8080);
+			ObjectOutputStream objectOutStream = new ObjectOutputStream(socket.getOutputStream());
+			ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());
 
-			AccountDTO oAccDTO = new AccountDTO(Integer.parseInt(txtUserName.getText()),
-					Integer.parseInt(txtPIN.getText()), Double.parseDouble(txtAmount.getText()));
-			oAccDTO.setOperation(action);
-			out.writeObject(oAccDTO);
-			out.flush();
-			ResultDTO oResult = (ResultDTO) in.readObject();
+			AccountDTO accountDTO = new AccountDTO(Integer.parseInt(mUserNameTF.getText()),
+			Integer.parseInt(mPINTF.getText()), Double.parseDouble(mAmountTF.getText()));
+			accountDTO.setOperation(action);
+			objectOutStream.writeObject(accountDTO);
+			objectOutStream.flush();
+			ResultDTO oResult = (ResultDTO) objectInputStream.readObject();
 
 			if (oResult.getMessage() != null) {
-				lblErrorMsg.setText("Error");
-				lblShowBalance.setText(oResult.getMessage());
+				mErrorMessageLabel.setText("Error");
+				mShowBlanceLabel.setText(oResult.getMessage());
 			} else {
-				lblErrorMsg.setText("Balance");
-				lblShowBalance.setText(String.format("$%,.2f", oResult.getBalance()));
+				mErrorMessageLabel.setText("Balance");
+				mShowBlanceLabel.setText(String.format("$%,.2f", oResult.getBalance()));
 			}
 
-			out.close();
-			in.close();
+			objectOutStream.close();
+			objectInputStream.close();
 			socket.close();
 		} catch (IOException | ClassNotFoundException e) {
 			e.printStackTrace();
